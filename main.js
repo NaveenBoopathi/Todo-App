@@ -29,17 +29,15 @@ $(document).ready(function() {
       var element = $('ul li').eq(checkboxId);
       $(element).fadeOut('slow', function() {
         $('#todoList').empty();
-        console.log('inside if');
         generateTodoList();
       });
     } else {
       $('#todoList').empty();
-      console.log('inside else');
       generateTodoList();
     }
   }
 
-  $('button').on('click', function() {
+  function addTodo() {
     var todoItem = $('#todoItem').val();
     if (todoItem) {
       newTodo =
@@ -54,15 +52,23 @@ $(document).ready(function() {
     } else {
       alert('Please enter an item to add!');
     }
+  }
+
+  $('button').on('click', addTodo);
+
+  $('#todoItem').keypress(function(e) {
+    var key = e.which;
+    if (key === 13) {
+      addTodo();
+      return false;
+    }
   });
 
   function bindCheckboxChange() {
     $('input[type = checkbox]').change(function() {
-      console.log('called!');
       if ($(this).prop('checked')) {
         var checkboxId = $(this).attr('id');
         checkboxId = parseInt(checkboxId.slice(4), 10);
-        console.log(checkboxId);
         todoList.splice(checkboxId, 1);
         removeTodoList(checkboxId);
       }
