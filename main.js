@@ -39,7 +39,7 @@ $(document).ready(function() {
 
   function addTodo() {
     var todoItem = $('#todoItem').val();
-    if (todoItem) {
+    if (todoItem && todoItem.trim() !== "") {
       newTodo =
         '<li><label><input type="checkbox" id="todo' +
         todoList.length +
@@ -51,10 +51,11 @@ $(document).ready(function() {
       $('#todoItem').val('');
     } else {
       alert('Please enter an item to add!');
+      $('#todoItem').val('');
     }
   }
 
-  $('button').on('click', addTodo);
+  $('#addButton').on('click', addTodo);
 
   $('#todoItem').keypress(function(e) {
     var key = e.which;

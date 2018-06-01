@@ -1,6 +1,6 @@
-# Todo-App
+# Todo
 
-To be short, this application is mainly used to make a list of our daily tasks.
+This application is used to make a list of our daily tasks.
 
 Steps to run this application:
 
